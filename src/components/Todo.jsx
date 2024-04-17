@@ -6,20 +6,20 @@ import FilterButton from "./FilterButton";
 import TodoList from "./TodoList";
 
 const Todo = () => {
-    // const todos=useSelector((state)=>state.todos);
-    // const filter=useSelector((state)=>state.filter);
+  // const todos=useSelector((state)=>state.todos);
+  // const filter=useSelector((state)=>state.filter);
   const dispatch = useDispatch();
   const [newTodo, setNewTodo] = useState("");
-  const [searchTerm, setSearchTerm] = useState(""); 
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const handleToAdd=(text)=>{
-    dispatch(addToDo(text))
-  }
+  const handleToAdd = (text) => {
+    dispatch(addToDo(text));
+  };
 
   const handleAddTodoClick = () => {
     if (newTodo.trim() !== "") {
-      dispatch(handleToAdd(newTodo.trim()));
-      setNewTodo("");
+      handleToAdd(newTodo.trim());
+      setNewTodo(" ");
     }
   };
 
@@ -62,15 +62,12 @@ const Todo = () => {
             className="flex-grow p-2 outline-none border-b-2 border-gray-400 focus:border-blue-400"
           />
 
-          <button
-      
-            className="ml-4 p-1 text-3xl bg-blue-500 text-white rounded hover:bg-blue-500"
-          >
+          <button className="ml-4 p-1 text-3xl bg-blue-500 text-white rounded hover:bg-blue-500">
             <BsSearch />
           </button>
         </div>
       </div>
-      <TodoList/>
+      <TodoList />
     </div>
   );
 };
