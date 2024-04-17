@@ -1,33 +1,30 @@
 /* eslint-disable no-undef */
 import {
   ADD_TODO,
-
+  TOGGLE_TODO,
   REMOVE_TODO,
   MARK_COMPLETED,
   MARK_INCOMPLETED,
   FILTER_TODO,
-  UPDATE_SEARCH_TERM,
-  TOGGLE_TODO,
   MARK_ALL_COMPLETED,
+  UPDATE_SEARCH_TERM,
 } from "./ActionTypes";
-export const addToDO = (text) => {
+export const addToDo = (text) => {
   return {
     type: ADD_TODO,
     payload: { text },
   };
 };
 
-export const toggleTodo = (id) => {
-  return {
-    type: TOGGLE_TODO,
-    payload: { id },
-  };
-};
+export const toggleTodo = (id) => ({
+  type: TOGGLE_TODO,
+  payload: { id },
+});
 
-export const removeTodo = (filter) => {
+export const removeTodo = (id) => {
   return {
     type: REMOVE_TODO,
-    payload: { filter },
+    payload: { id },
   };
 };
 
@@ -43,19 +40,19 @@ export const markIncompleted = (id) => {
     payload: { id },
   };
 };
-export const filterTodo = (id) => {
+export const filterTodo = (filter) => {
   return {
     type: FILTER_TODO,
-    payload: { id },
+    payload: { filter },
   };
 };
 export const markAllCompleted = () => ({
   type: MARK_ALL_COMPLETED,
 });
 
-export const upDateSearchTerm= (term) => {
-    return {
-        type: UPDATE_SEARCH_TERM,
-        payload: { term }
-    }
-}
+export const upDateSearchTerm = (term) => {
+  return {
+    type: UPDATE_SEARCH_TERM,
+    payload: { term },
+  };
+};

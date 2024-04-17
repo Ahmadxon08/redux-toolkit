@@ -3,8 +3,8 @@
 import { FaCheck, FaTimes, FaToggleOff, FaTrash } from "react-icons/fa";
 import { FaToggleOn } from "react-icons/fa6";
 import { useDispatch } from "react-redux";
-import { markCompleted, removeTodo, toggleTodo } from "../app/plans/Action";
-import { markIncompleted } from "./../app/plans/Action";
+import { markCompleted, markIncompleted, removeTodo, toggleTodo } from "../app/plans/Action";
+
 
 const TodoItem = ({ todo, index }) => {
   const dispatch = useDispatch();

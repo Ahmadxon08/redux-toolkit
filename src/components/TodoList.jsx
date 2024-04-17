@@ -7,7 +7,7 @@ const TodoList = () => {
   const filteredTodoList = useSelector((state) => {
     const todos = state.todos;
     const filter = state.filter;
-    const term = state.term;
+    const term = state.term.toLowerCase();
 
     return todos.filter((todo) => {
       const matchFilter =
@@ -15,19 +15,17 @@ const TodoList = () => {
         (filter === "INCOMPLETED" && !todo.completed) ||
         filter === "ALL";
 
-      const matchTerm = todo.text.toLowerCase().includes(term.toLowerCase());
+      const matchTerm = todo.text.toLowerCase().includes(term);
 
       return matchFilter && matchTerm;
     });
   });
 
-
-
   return (
     <ul>
       <li className="my-2 text-sm italic"> All your notes Here...</li>
       {filteredTodoList.map((todo, index) => {
-        return <TodoItems  key={index} todo={todo} index={index}/>;
+        return <TodoItems key={index} todo={todo} index={index} />;
       })}
     </ul>
   );

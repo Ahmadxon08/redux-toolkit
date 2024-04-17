@@ -45,25 +45,29 @@ const todoReducer = (state = initialState, action) => {
     case MARK_COMPLETED:
       return {
         ...state,
-        todos: state.todos.map((todo) => ({ ...todo, completed: true })),
+        todos: state.todos.map((todo, i) =>
+          i === action.payload.id ? { ...todo, completed: true } : todo
+        ),
       };
 
     case MARK_INCOMPLETED:
       return {
         ...state,
-        todos: state.todos.map((todo) => ({ ...todo, completed: false })),
+        todos: state.todos.map((todo, index) =>
+          index === action.payload.id ? { ...todo, completed: false } : todo
+        ),
       };
 
     case FILTER_TODO:
       return {
         ...state,
-        filter: action.payload.filter, // Filter'ı güncelle
+        filter: action.payload.filter,
       };
 
     case UPDATE_SEARCH_TERM:
       return {
         ...state,
-        term: action.payload.term, // Arama terimini güncelle
+        term: action.payload.term,
       };
 
     case MARK_ALL_COMPLETED:
