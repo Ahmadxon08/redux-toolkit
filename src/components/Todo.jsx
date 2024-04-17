@@ -2,6 +2,8 @@ import { useState } from "react";
 import { BsPlusSquareDotted, BsSearch } from "react-icons/bs"; // Import the BsSearch icon
 import { useDispatch } from "react-redux";
 import { addToDO, upDateSearchTerm } from "./../app/plans/Action";
+import FilterButton from "./FilterButton";
+import TodoList from "./TodoList";
 
 const Todo = () => {
   const dispatch = useDispatch();
@@ -41,22 +43,27 @@ const Todo = () => {
           <BsPlusSquareDotted />
         </button>
       </div>
-      <div className="flex items-center mb-4">
-        <input
-          type="text"
-          name="searchTodo"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          placeholder="Search Todo"
-          className="flex-grow p-2 outline-none border-b-2 border-gray-400 focus:border-blue-400"
-        />
-        <button
-          onClick={handleSearch}
-          className="ml-4 p-1 text-3xl bg-blue-500 text-white rounded hover:bg-blue-500"
-        >
-          <BsSearch />
-        </button>
+      <div className="flex items-center mb-4 justify-between">
+        <FilterButton />
+        <div className="flex items-center">
+          <input
+            type="text"
+            name="searchTodo"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            placeholder="Search Todo"
+            className="flex-grow p-2 outline-none border-b-2 border-gray-400 focus:border-blue-400"
+          />
+
+          <button
+            onClick={handleSearch}
+            className="ml-4 p-1 text-3xl bg-blue-500 text-white rounded hover:bg-blue-500"
+          >
+            <BsSearch />
+          </button>
+        </div>
       </div>
+      <TodoList/>
     </div>
   );
 };

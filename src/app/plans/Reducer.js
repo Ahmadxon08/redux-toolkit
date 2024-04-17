@@ -11,7 +11,7 @@ import {
 
 const initialState = {
   todos: [],
-  filter: "SHOW_ALL",
+  filter: "ALL",
   term: "",
 };
 
@@ -53,23 +53,24 @@ const todoReducer = (state = initialState, action) => {
         ...state,
         todos: state.todos.map((todo) => ({ ...todo, completed: false })),
       };
+
     case FILTER_TODO:
       return {
         ...state,
-        filter: state.filter,
+        filter: action.payload.filter, // Filter'ı güncelle
       };
 
     case UPDATE_SEARCH_TERM:
       return {
         ...state,
-        term: state.action.payload.term,
+        term: action.payload.term, // Arama terimini güncelle
       };
-    case  MARK_ALL_COMPLETED:
+
+    case MARK_ALL_COMPLETED:
       return {
         ...state,
-        todos: state.todos.map(todo => ({ ...todo, completed: true })),
+        todos: state.todos.map((todo) => ({ ...todo, completed: true })),
       };
-   
 
     default:
       return state;
